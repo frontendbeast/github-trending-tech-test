@@ -1,11 +1,12 @@
 import Head from "next/head";
 import styles from "@/pages/index.module.css";
-import { Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
 
-import { Data, Node, Edge } from "../data.types";
+import { Data, Edge } from "../data.types";
 
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_OCTOKIT_ACCESS_TOKEN,
@@ -69,7 +70,10 @@ export default function Home() {
           The most starred repositories created in the last 7 days!
         </Typography>
 
-        {repos.map(repo => <div>{repo.name}</div>)}
+        <Grid container spacing={4}>
+          {repos.map(repo => <Grid xs={4} md={3} lg={2} key={`repo-${repo.id}`}><Card><CardContent><Typography variant="h6" component="h2">{repo.name}</Typography></CardContent></Card></Grid>)}
+        </Grid>
+
       </Container>
     </>
   );
