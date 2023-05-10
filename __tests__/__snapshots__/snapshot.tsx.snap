@@ -3,102 +3,50 @@
 exports[`renders homepage unchanged 1`] = `
 <div>
   <div
-    class="container"
+    class="MuiContainer-root MuiContainer-maxWidthLg container css-1oqqzyl-MuiContainer-root"
   >
-    <main>
-      <h1
-        class="title"
-      >
-        Welcome to 
-        <a
-          href="https://nextjs.org"
-        >
-          Next.js!
-        </a>
-      </h1>
-      <p
-        class="description"
-      >
-        Get started by editing 
-        <code>
-          pages/index.js
-        </code>
-      </p>
-      <div
-        class="grid"
-      >
-        <a
-          class="card"
-          href="https://nextjs.org/docs"
-        >
-          <h3>
-            Documentation →
-          </h3>
-          <p>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://nextjs.org/learn"
-        >
-          <h3>
-            Learn →
-          </h3>
-          <p>
-            Learn about Next.js in an interactive course with quizzes!
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://github.com/vercel/next.js/tree/canary/examples"
-        >
-          <h3>
-            Examples →
-          </h3>
-          <p>
-            Discover and deploy boilerplate example Next.js projects.
-          </p>
-        </a>
-        <a
-          class="card"
-          href="https://vercel.com/new"
-        >
-          <h3>
-            Deploy →
-          </h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-    <footer
-      class="footer"
+    <h1
+      class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
     >
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        rel="noopener noreferrer"
-        target="_blank"
+      GitHub Trending
+    </h1>
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+    >
+      The most starred repositories created in the last 7 days!
+    </p>
+    <div
+      class="MuiToggleButtonGroup-root contentContainer css-1gjgmky-MuiToggleButtonGroup-root"
+      role="group"
+    >
+      <button
+        aria-pressed="true"
+        class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-sizeMedium MuiToggleButton-primary MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-d9c359-MuiButtonBase-root-MuiToggleButton-root"
+        tabindex="0"
+        type="button"
+        value="all"
       >
-        Powered by
-         
+        All
         <span
-          class="logo"
-        >
-          <img
-            alt="Vercel Logo"
-            data-nimg="1"
-            decoding="async"
-            height="16"
-            loading="lazy"
-            src="/vercel.svg"
-            style="color: transparent;"
-            width="72"
-          />
-        </span>
-      </a>
-    </footer>
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-pressed="false"
+        class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeMedium MuiToggleButton-primary MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-d9c359-MuiButtonBase-root-MuiToggleButton-root"
+        tabindex="0"
+        type="button"
+        value="fav"
+      >
+        Favourites
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-spacing-xs-4 contentContainer css-129ydy1-MuiGrid2-root"
+    />
   </div>
 </div>
 `;

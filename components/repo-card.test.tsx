@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Home from './repo-card'
 import RepoCard from './repo-card'
 
@@ -15,10 +15,22 @@ const data = {
 
 describe('Home', () => {
   it('renders the correct data', () => {
-    render(<RepoCard {...data} />)
+    const setFavs = jest.fn()
+
+    render(<RepoCard {...data} favs={[]} setFavs={setFavs} />)
+
 
     expect(screen.getByText('open-llms')).toBeTruthy()
     expect(screen.getByText("🤖 A list of open LLMs available for commercial use.")).toBeTruthy()
     expect(screen.getByText("3147")).toBeTruthy()
+  })
+  it('handles toggleFav button click', () => {
+    const onClick = jest.fn()
+
+    render(<RepoCard {...data} favs={[]} setFavs={onClick} />)
+
+    fireEvent.click(screen.getByRole('button'))
+
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })
