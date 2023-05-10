@@ -1,29 +1,27 @@
-# Next.js + Jest
+# GitHub Trending Tech Test
 
-This example shows how to configure Jest to work with Next.js.
+The most starred repositories created in the last 7 days! Made with Next.js and MUI. 
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+## Before you begin
 
-## How to Use
+You'll need to create a `.env.local` file to save your GitHub access token in.
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
-
-In your terminal, run the following command:
-
-```bash
-npx create-next-app --example with-jest with-jest-app
+```
+NEXT_PUBLIC_OCTOKIT_ACCESS_TOKEN=xxx
 ```
 
+## How to run
+
 ```bash
-yarn create next-app --example with-jest with-jest-app
+npm install
+npm run dev
 ```
 
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
+You can view the app in your browser at http://localhost:3000.
 
-## Run Jest Tests
+
+## How to run tests
 
 ```bash
-npm test
+npm run test
 ```
