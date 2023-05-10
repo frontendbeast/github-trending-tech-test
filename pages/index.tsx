@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
 
 import { Data, Edge } from "../data.types";
+import RepoCard from "@/components/repo-card";
 
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_OCTOKIT_ACCESS_TOKEN,
@@ -70,8 +71,12 @@ export default function Home() {
           The most starred repositories created in the last 7 days!
         </Typography>
 
-        <Grid container spacing={4}>
-          {repos.map(repo => <Grid xs={4} md={3} lg={2} key={`repo-${repo.id}`}><Card><CardContent><Typography variant="h6" component="h2">{repo.name}</Typography></CardContent></Card></Grid>)}
+        <Grid container spacing={4} className={styles.gridContainer}>
+          {repos.map(repo => (
+            <Grid xs={4} md={3} lg={2} key={`repo-${repo.id}`}>
+              <RepoCard {...repo} />
+            </Grid>
+          ))}
         </Grid>
 
       </Container>
