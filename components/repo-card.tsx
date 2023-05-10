@@ -10,16 +10,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 import styles from "@/components/repo-card.module.css";
 
-type Edge = {
-  createdAt: string;
-  description: string;
-  name: string;
-  id: string;
-  stargazers: {
-    totalCount: number;
-  };
-  url: string;
-};
+import { Edge } from "data.types";
 
 interface RepoCardProps extends Edge {
   favs: string[];
