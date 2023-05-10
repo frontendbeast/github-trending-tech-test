@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/pages/index.module.css";
-import { Typography } from "@mui/material";
+import { Box, Tab, Tabs, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
@@ -16,7 +16,8 @@ const octokit = new Octokit({
 export default function Home() {
   const [repos, setRepos] = useState<Edge[]>([]);
   const [favs, setFavs] = useState<string[]>([]);
-
+  const [tab, setTab] = useState<string>('');
+  
   useEffect(() => {
     const getData = async () => {
       const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -59,12 +60,24 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setFavs(JSON.parse(window.localStorage.getItem('favs') ?? '[]'))
-  },[])
+    setFavs(JSON.parse(window.localStorage.getItem("favs") ?? "[]"));
+    setTab(window.localStorage.getItem("tab") ?? "all");
+  }, []);
 
-  useEffect(()=>{
-      window.localStorage.setItem('favs', JSON.stringify(favs))
-  },[favs])
+  useEffect(() => {
+    window.localStorage.setItem("favs", JSON.stringify(favs));
+  }, [favs]);
+
+  useEffect(() => {
+    window.localStorage.setItem("tab", tab);
+  }, [tab]);
+
+  const tabChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newTab: string,
+  ) => {
+    setTab(newTab);
+  };
 
   return (
     <>
@@ -80,14 +93,28 @@ export default function Home() {
           The most starred repositories created in the last 7 days!
         </Typography>
 
-        <Grid container spacing={4} className={styles.gridContainer}>
-          {repos.map(repo => (
+        <ToggleButtonGroup
+          color="primary"
+          value={tab}
+          exclusive
+          onChange={tabChange}
+          className={styles.contentContainer}
+        >
+          <ToggleButton value="all">All</ToggleButton>
+          <ToggleButton value="fav">Favourites</ToggleButton>
+        </ToggleButtonGroup>
+
+        <Grid container spacing={4} className={styles.contentContainer}>
+          {repos.filter(repo => (tab === 'all' || favs.includes(repo.id))).map((repo) => (
             <Grid xs={4} md={3} lg={2} key={`repo-${repo.id}`}>
-              <RepoCard {...repo} favs={favs} setFavs={(favs: string[]) => setFavs(favs)} />
+              <RepoCard
+                {...repo}
+                favs={favs}
+                setFavs={(favs: string[]) => setFavs(favs)}
+              />
             </Grid>
           ))}
         </Grid>
-
       </Container>
     </>
   );
