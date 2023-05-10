@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/pages/index.module.css";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ const octokit = new Octokit({
 
 export default function Home() {
   const [repos, setRepos] = useState<Edge[]>([]);
+  const [favs, setFavs] = useState<string[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -57,6 +58,14 @@ export default function Home() {
     getData();
   }, []);
 
+  useEffect(() => {
+    setFavs(JSON.parse(window.localStorage.getItem('favs') ?? '[]'))
+  },[])
+
+  useEffect(()=>{
+      window.localStorage.setItem('favs', JSON.stringify(favs))
+  },[favs])
+
   return (
     <>
       <Head>
@@ -74,7 +83,7 @@ export default function Home() {
         <Grid container spacing={4} className={styles.gridContainer}>
           {repos.map(repo => (
             <Grid xs={4} md={3} lg={2} key={`repo-${repo.id}`}>
-              <RepoCard {...repo} />
+              <RepoCard {...repo} favs={favs} setFavs={(favs: string[]) => setFavs(favs)} />
             </Grid>
           ))}
         </Grid>

@@ -16,3 +16,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.repoCardFav {
+  appearance: none;
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.repoCardFav:hover {
+  color: red;
+}
